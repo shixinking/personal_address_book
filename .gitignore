@@ -28,3 +28,29 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+# IDEA 配置文件
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+target/
+
+# Eclipse 配置文件
+.classpath
+.project
+.settings/
+
+# VS Code 配置文件
+.vscode/
+
+# 编译生成的文件
+*.class
+*.jar
+*.war
+*.logs
+
+# 系统文件
+.DS_Store
+Thumbs.db
