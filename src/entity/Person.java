@@ -3,21 +3,23 @@ package entity;
 import java.io.Serializable;
 
 public class Person implements Serializable {
-    private String name;
-    private String location;
-    private int phone;
-    private String gender;
     private String group;
+    private String name;
+    private String gender;
+    private String location;
+    private String phone;
+
+
 
     public Person() {
         name = "";
         location = "";
-        phone = 0;
+        phone = "";
         gender = "";
         group = "";
     }
 
-    public Person(String mname, String mloc, int mphone, String mgender, String mgroup) {
+    public Person(String mname, String mloc, String mphone, String mgender, String mgroup) {
         name = mname;
         location = mloc;
         phone = mphone;
@@ -33,7 +35,7 @@ public class Person implements Serializable {
         this.location = location;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -57,7 +59,7 @@ public class Person implements Serializable {
         return gender;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -66,11 +68,11 @@ public class Person implements Serializable {
     }
 
     public void get_info() {
-        System.out.println("姓名:" + name);
-        System.out.println("地区:" + location);
-        System.out.println("性别:" + gender);
-        System.out.println("电话:" + phone);
         System.out.println("分组:" + group);
+        System.out.println("姓名:" + name);
+        System.out.println("性别:" + gender);
+        System.out.println("地区:" + location);
+        System.out.println("电话:" + phone);
     }
 
 }
