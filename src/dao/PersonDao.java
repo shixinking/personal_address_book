@@ -21,6 +21,7 @@ public class PersonDao {
         }
     }
 
+    // 打印信息
     public static void print(String[] person) {
         System.out.println("分组:" + person[0]);
         System.out.println("姓名:" + person[1]);
@@ -65,12 +66,12 @@ public class PersonDao {
     }
 
     // 根据信息查询
-    public static boolean selectphone(String phone,int i) {
+    public static boolean selectphone(String string,int i) {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] person = line.split("\\|");
-                if (person[i].equals(phone)) {
+                if (person[i].equals(string)) {
                     print(person);
                 }
             }
