@@ -27,7 +27,6 @@ public class PersonManage {
         {
             System.out.println("添加失败");
         }
-        ScannerUtil.close();
     }
 
     public static void deletePerson()
@@ -51,19 +50,17 @@ public class PersonManage {
         {
             System.out.println("删除失败");
         }
-        ScannerUtil.close();
     }
 
     public static void selectPerson()
     {
         System.out.println("请选择查询内容");
-        int input = ScannerUtil.getMenuChoice("0.分组\n1.姓名\n2.性别\n3.地址\n4.电话号码",0,4);
+        int input = ScannerUtil.getMenuChoice("0.分组\n1.姓名\n2.性别\n3.地址\n4.电话号码\n",0,4);
         String string = ScannerUtil.getString("请输入:");
         if (!PersonDao.selectphone(string,input))
         {
             System.out.println("查找失败");
         }
-        ScannerUtil.close();
     }
 
     public static void updatePerson()
@@ -91,8 +88,21 @@ public class PersonManage {
         {
             System.out.println("更改失败");
         }
+    }
 
-        ScannerUtil.close();
+    public static void showPersonAddress()
+    {
+        if (!PersonDao.showAddress())
+        {
+            System.out.println("查询失败,通讯录可能为空");
+        }
+    }
 
+    public static void recreateAddress()
+    {
+        if (!PersonDao.recreate())
+        {
+            System.out.println("重置失败");
+        }
     }
 }
