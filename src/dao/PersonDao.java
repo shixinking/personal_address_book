@@ -31,6 +31,28 @@ public class PersonDao {
         System.out.println('\n');
     }
 
+    // 展示通讯录
+    public static boolean showAddress()
+    {
+        boolean res = false;
+        try (BufferedReader br = new BufferedReader(new FileReader(file)))
+        {
+            String line;
+            while((line = br.readLine()) != null)
+            {
+                res = true;
+                String[] lineperson = line.split("\\|");
+                print(lineperson);
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        return res;
+    }
+
     // 获取绝对路径
     public static String getAbsolutePath() {
         return file.getAbsolutePath();
@@ -69,18 +91,19 @@ public class PersonDao {
     public static boolean selectphone(String string,int i) {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
+            boolean res = false;
             while ((line = br.readLine()) != null) {
                 String[] person = line.split("\\|");
                 if (person[i].equals(string)) {
                     print(person);
+                    res = true;
                 }
             }
+            return res;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
-
-        return true;
     }
 
 
@@ -88,6 +111,7 @@ public class PersonDao {
     // 删除用户
     public static boolean deletePerson(Person person) {
         List<Person> list = new ArrayList<>();
+        boolean res = false;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -107,6 +131,10 @@ public class PersonDao {
 
                     list.add(p1);
                 }
+                else
+                {
+                    res = true;
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -125,12 +153,13 @@ public class PersonDao {
             return false;
         }
 
-        return true;
+        return res;
     }
 
     //改通讯录信息
     public static boolean updatePerson(Person person, int i, String s) {
         List<Person> list = new ArrayList<>();
+        boolean res = false;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -154,10 +183,12 @@ public class PersonDao {
                     } else if (i == 4) {
                         p1.setPhone(s);
                     }
+                    res = true;
                 }
 
                 list.add(p1);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -175,7 +206,7 @@ public class PersonDao {
             return false;
         }
 
-        return true;
+        return res;
     }
 
 }
